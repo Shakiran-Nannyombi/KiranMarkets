@@ -23,9 +23,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation, onScrollToNo
         
         {/* Brand Logo */}
         <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-          <div className="w-8 h-8 rounded-sm bg-[#0066FF] flex items-center justify-center font-extrabold text-white text-lg shadow-md">
-            K
-          </div>
+          <img
+            src="/logo.png"
+            alt="Kiran Markets Logo"
+            className="w-9 h-9 rounded-md object-contain shadow-sm bg-white"
+          />
           <div className="flex items-center gap-2">
             <span className="font-extrabold text-xl tracking-tight uppercase text-[#0A2540]">
               Kiran<span className="text-[#0066FF]">Markets</span>

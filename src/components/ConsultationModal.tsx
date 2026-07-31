@@ -79,9 +79,11 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
           <div>
             {/* Modal Header */}
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-xl bg-[#0A2540] text-white flex items-center justify-center font-bold text-lg shadow-md">
-                K
-              </div>
+              <img
+                src="/logo.png"
+                alt="Kiran Markets Logo"
+                className="w-12 h-12 rounded-xl bg-[#0A2540] object-contain p-1.5 shadow-md border border-[#0A2540]/10"
+              />
               <div>
                 <span className="text-xs font-bold text-[#0066FF] uppercase tracking-wider flex items-center gap-1">
                   <ShieldCheck className="w-3.5 h-3.5 text-[#0066FF]" /> Deep-Dive Strategy Session

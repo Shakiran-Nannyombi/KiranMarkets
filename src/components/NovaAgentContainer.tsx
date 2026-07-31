@@ -315,7 +315,7 @@ ${generatedHooks
             <span>Interactive Strategy Audit Engine</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0A2540] tracking-tight">
-            Meet <span className="text-[#0066FF]">Nova</span> — Your AI Marketing Strategist
+            Meet <span className="text-[#0066FF]">Nova</span> Your AI Marketing Strategist
           </h2>
           <p className="mt-3 text-base sm:text-lg text-gray-600 font-normal">
             Conduct a real-time 5-stage strategic discovery session to audit your growth bottlenecks and unlock 2-3 tailored campaign blueprints.
@@ -329,9 +329,12 @@ ${generatedHooks
           <div className="bg-[#0A2540] text-white p-4 sm:p-5 flex items-center justify-between border-b border-[#0066FF]/20">
             <div className="flex items-center gap-3.5">
               <div className="relative">
-                <div className="w-11 h-11 bg-gradient-to-br from-[#0066FF] to-[#0A2540] rounded-full flex items-center justify-center p-0.5 shadow-md">
-                  <div className="w-2.5 h-2.5 bg-white rounded-full animate-ping" />
-                </div>
+                <img
+                  src="/logo.png"
+                  alt="Kiran Markets Logo"
+                  className="w-11 h-11 bg-white rounded-full object-contain p-1 shadow-md border-2 border-[#0066FF]"
+                />
+                <span className="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 rounded-full border-2 border-[#0A2540] animate-pulse" />
               </div>
 
               <div>

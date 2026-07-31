@@ -28,9 +28,11 @@ export const Footer: React.FC<FooterProps> = ({ onOpenConsultation, onScrollToNo
           {/* Brand Info */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-lg bg-gradient-to-tr from-[#0066FF] to-[#00A3FF] flex items-center justify-center font-bold text-white text-lg">
-                K
-              </div>
+              <img
+                src="/logo.png"
+                alt="Kiran Markets Logo"
+                className="w-10 h-10 rounded-lg object-contain bg-white/10 p-1 shadow-md border border-white/10"
+              />
               <span className="font-extrabold text-xl text-white tracking-tight">
                 Kiran<span className="text-[#0066FF]">Markets</span>
               </span>
