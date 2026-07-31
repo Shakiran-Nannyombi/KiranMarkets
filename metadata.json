@@ -1,0 +1,6 @@
+{
+  "name": "Kiran Markets - B2B Strategic Marketing Agency",
+  "description": "High-end B2B strategic marketing agency featuring Nova, an interactive AI Marketing Strategist for instant business discovery and tailored growth blueprints.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
