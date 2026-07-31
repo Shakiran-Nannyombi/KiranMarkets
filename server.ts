@@ -25,9 +25,77 @@ function getGeminiAI() {
   });
 }
 
+// System instructions for Marketing Discovery Agent
+const AGENCY_NAME = "Kiran Markets";
+const FOUNDER_NAME = "Kiran";
+
+const SYSTEM_INSTRUCTION = `You are Nova, the AI Marketing Specialist at ${AGENCY_NAME}. Your goal is to conduct an initial discovery session with prospective clients and brainstorm tailored marketing ideas.
+
+Tone & Style: Professional, creative, inquisitive, and direct. 
+
+Instructions & Workflow:
+1. Greet the visitor warmly and ask what project or business they are currently working on.
+2. Guide the conversation through 3 key areas (ask ONLY ONE question at a time):
+   - Target audience & main product/service
+   - Current marketing tactics and budget scale
+   - Biggest growth bottleneck or goal for the next 3-6 months
+3. Once you have sufficient context, summarize their situation in 2 sentences.
+4. Present 2 distinct, highly specific marketing strategy ideas tailored to their responses.
+5. Conclude by offering to schedule a deep-dive call with our founder, ${FOUNDER_NAME}, to turn those ideas into an action plan.`;
+
 // API Health Check
 app.get("/api/health", (req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
+});
+
+// Interactive Chat Endpoint with Gemini Nova Agent
+app.post("/api/nova/chat", async (req, res) => {
+  const { messages, userMessage } = req.body;
+  const ai = getGeminiAI();
+
+  if (!ai) {
+    return res.status(500).json({
+      success: false,
+      error: "GEMINI_API_KEY environment variable is missing or not configured.",
+    });
+  }
+
+  try {
+    // Format conversation history for Gemini API
+    const formattedHistory = (messages || []).map((msg: any) => ({
+      role: msg.sender === "user" ? "user" : "model",
+      parts: [{ text: msg.text }],
+    }));
+
+    if (userMessage) {
+      formattedHistory.push({
+        role: "user",
+        parts: [{ text: userMessage }],
+      });
+    }
+
+    const response = await ai.models.generateContent({
+      model: "gemini-3.6-flash",
+      contents: formattedHistory.length > 0 ? formattedHistory : [{ role: "user", parts: [{ text: "Hello!" }] }],
+      config: {
+        systemInstruction: SYSTEM_INSTRUCTION,
+        temperature: 0.7,
+      },
+    });
+
+    const reply = response.text?.trim() || "I am analyzing your response to craft your strategy. What are your main target goals?";
+
+    return res.json({
+      success: true,
+      reply,
+    });
+  } catch (error: any) {
+    console.error("Error in /api/nova/chat:", error);
+    return res.status(500).json({
+      success: false,
+      error: error.message || "Failed to communicate with Nova AI Agent.",
+    });
+  }
 });
 
 // Nova AI Strategy Endpoint

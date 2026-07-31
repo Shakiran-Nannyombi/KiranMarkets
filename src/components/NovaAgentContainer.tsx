@@ -219,12 +219,36 @@ export const NovaAgentContainer: React.FC<NovaAgentContainerProps> = ({ onOpenCo
             console.error(err);
           }
         } else if (stage === 5 || stage === 4) {
-          // Stage 5 user chatter
-          addMessage({
-            sender: 'nova',
-            text: "I have recorded your additional notes. Click below to lock in your strategy consultation with Kiran.",
-            stage: 5,
-          });
+          // Dynamic chat with Nova Agent using Gemini API
+          try {
+            const chatHistoryForApi = chatMessages.map((m) => ({
+              sender: m.sender,
+              text: m.text,
+            }));
+
+            const res = await fetch('/api/nova/chat', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                messages: chatHistoryForApi,
+                userMessage: trimmed,
+              }),
+            });
+            const data = await res.json();
+            const novaReply = data.reply || "I have recorded your additional notes. Click below to lock in your strategy consultation with Kiran.";
+
+            addMessage({
+              sender: 'nova',
+              text: novaReply,
+              stage: 5,
+            });
+          } catch (err) {
+            addMessage({
+              sender: 'nova',
+              text: "I have recorded your additional notes. Click below to lock in your strategy consultation with Kiran.",
+              stage: 5,
+            });
+          }
           playNotificationSound();
         }
       } catch (error) {
