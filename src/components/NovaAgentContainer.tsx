@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Sparkles, Send, User, Bot, Check, ArrowRight, RefreshCw, Calendar, Download, Copy, Volume2, VolumeX, Shield, CheckCircle2 } from 'lucide-react';
+import logoImg from '../assets/logo.png';
 import { ChatMessage, DiscoveryContext, StageNumber, StrategyHook } from '../types';
 import { PRESET_PILLS } from '../data/agencyData';
 
@@ -330,7 +331,7 @@ ${generatedHooks
             <div className="flex items-center gap-3.5">
               <div className="relative">
                 <img
-                  src="/logo.png"
+                  src={logoImg}
                   alt="Kiran Markets Logo"
                   className="w-11 h-11 bg-white rounded-full object-contain p-1 shadow-md border-2 border-[#0066FF]"
                 />

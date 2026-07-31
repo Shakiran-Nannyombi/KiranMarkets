@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Sparkles, Calendar, Menu, X, ArrowUpRight, ShieldCheck } from 'lucide-react';
+import logoImg from '../assets/logo.png';
 
 interface NavbarProps {
   onOpenConsultation: () => void;
@@ -24,7 +25,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation, onScrollToNo
         {/* Brand Logo */}
         <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
           <img
-            src="/logo.png"
+            src={logoImg}
             alt="Kiran Markets Logo"
             className="w-9 h-9 rounded-md object-contain shadow-sm bg-white"
           />

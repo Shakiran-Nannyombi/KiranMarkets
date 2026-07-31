@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { X, Calendar, Clock, User, Mail, Building, CheckCircle2, Sparkles, ShieldCheck, ArrowRight } from 'lucide-react';
+import logoImg from '../assets/logo.png';
 import { BookingFormData, DiscoveryContext, StrategyHook } from '../types';
 
 interface ConsultationModalProps {
@@ -80,7 +81,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
             {/* Modal Header */}
             <div className="flex items-center gap-3 mb-6">
               <img
-                src="/logo.png"
+                src={logoImg}
                 alt="Kiran Markets Logo"
                 className="w-12 h-12 rounded-xl bg-[#0A2540] object-contain p-1.5 shadow-md border border-[#0A2540]/10"
               />

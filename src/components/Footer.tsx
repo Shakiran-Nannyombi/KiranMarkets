@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ArrowUpRight, Shield, Mail, MapPin, Phone, CheckCircle2, Sparkles } from 'lucide-react';
+import logoImg from '../assets/logo.png';
 
 interface FooterProps {
   onOpenConsultation: () => void;
@@ -29,7 +30,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenConsultation, onScrollToNo
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
               <img
-                src="/logo.png"
+                src={logoImg}
                 alt="Kiran Markets Logo"
                 className="w-10 h-10 rounded-lg object-contain bg-white/10 p-1 shadow-md border border-white/10"
               />
