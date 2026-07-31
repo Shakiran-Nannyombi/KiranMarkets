@@ -215,6 +215,8 @@ Return JSON ONLY, no markdown backticks.`;
   }
 });
 
+export default app;
+
 async function startServer() {
   // Vite middleware for development
   if (process.env.NODE_ENV !== "production") {
@@ -236,4 +238,6 @@ async function startServer() {
   });
 }
 
-startServer();
+if (!process.env.VERCEL) {
+  startServer();
+}
